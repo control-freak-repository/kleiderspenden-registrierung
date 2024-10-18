@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Kleiderspenden Registrierung</title>
+  <link rel="stylesheet" href="style.css"> <!-- Linking to external CSS -->
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container">
+      <img src="images/Hoffnungsträger.jpg" alt="Hoffnungsträger Logo" class="logo">
+      <nav class="navbar">
+        <ul>
+          <li><a href="#home">Startseite</a></li>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><a href="#register">Mach mit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <a href="#register" class="btn-main">Mach mit</a>
+    </div>
+  </section>
+
+  <!-- Donation Registration Section -->
+  <section id="register" class="registration-section">
+    <div class="container">
+      <h2>Registriere Deine Kleiderspende</h2>
+      <form id="donationForm" onsubmit="return validateForm()">
+        <!-- Donor Name -->
+        <label for="donorName">Dein Name:</label>
+        <input type="text" id="donorName" name="donorName" placeholder="Gebe Deinen Namen ein" required>
+
+        <!-- Anonymous Checkbox -->
+        <label>
+          <input type="checkbox" id="anonymous" name="anonymous" value="yes"> Anonym bleiben
+        </label>
+
+        <!-- Email -->
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" placeholder="Gebe Deine E-Mail ein" required>
+
+        <!-- Phone Number -->
+        <label for="phone">Telefonnummer:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Gebe Deine Telefonnummer ein" required>
+
+        <!-- Donation Type -->
+        <label for="donationType">Spendetyp:</label>
+        <select id="donationType" name="donationType" onchange="handleDonationTypeChange()" required>
+          <option value="">Typ auswählen</option>
+          <option value="pickup">Abholung</option>
+          <option value="dropoff">Abgabe in der Geschäftsstelle</option>
+        </select>
+
+        <!-- Detailed Pickup Address (only visible if Pickup is selected) -->
+        <div id="pickupAddress" class="pickup-address" style="display:none;">
+          <label for="street">Straße:</label>
+          <input type="text" id="street" name="street" placeholder="Gebe Deine Straße ein" />
+
+          <label for="houseNumber">Hausnummer:</label>
+          <input type="text" id="houseNumber" name="houseNumber" placeholder="Hausnummer" />
+
+          <label for="plz">Postleitzahl (PLZ):</label>
+          <input type="text" id="plz" name="plz" placeholder="Gebe Deine PLZ ein" />
+
+          <label for="city">Stadt:</label>
+          <input type="text" id="city" name="city" placeholder="Gebe Deine Stadt ein" />
+
+          <label for="additionalInfo">Zusätzliche Adresse:</label>
+          <input type="text" id="additionalInfo" name="additionalInfo" placeholder="Z.B. Wohnung, Stockwerk,c/o" />
+        </div>
+
+        <!-- Clothing Type -->
+        <label for="clothingType">Art der Kleidung:</label>
+        <input type="text" id="clothingType" name="clothingType" placeholder="Z.B. Jacken, Hemden" required>
+
+        <!-- Crisis Region -->
+        <label for="crisisRegion">Krisengebiet:</label>
+        <select id="crisisRegion" name="crisisRegion" required>
+          <option value="">Wähle ein Gebiet aus</option>
+          <option value="region1">Region 1</option>
+          <option value="region2">Region 2</option>
+          <option value="region3">Region 3</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="submit">Absenden</button>
+      </form>
+
+      <!-- Thank You Message -->
+      <div id="thankYouMessage" style="display: none; margin-top: 20px; font-weight: bold;">
+        <div id="confirmationDetails"></div>
+        <p>Vielen Dank für deine Spende! Deine Registrierung wurde erfolgreich eingereicht.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>Über uns</h2>
+      <p>Willkommen bei Hoffnungsträger! </p>
+      <p>Hier arbeiten Freiwillige mit großer Leidenschaft daran, durch Kleiderspenden etwas zu erreichen. Bei uns handelt es sich um einen örtlichen, gemeinnützigen Verein, der sich für die Unterstützung bedürftiger Menschen in Krisensituationen mit wichtigen Kleidern einsetzt.</p>
+      <p>Unser Ziel ist es, Spender zu unterstützen, indem wir ihnen die Möglichkeit geben, ihre Beiträge zu verteilen. Wir sind davon überzeugt, dass jedes Kleidungsstück einen wesentlichen Einfluss ausüben kann. Wir wollen, dass unsere Spender selbst entscheiden, wo sie ihre Spenden hinstellen. </p>
+      <p>Wir schaffen eine intensivere Bindung zwischen Spendern und Empfängern, indem wir die Krisenregion auswählen können, die sie unterstützen möchten.</p>
+      <p>Was wir machen: Kleiderspenden werden von uns gesammelt, sortiert und an verschiedene Krisengebiete auf der ganzen Welt verteilt. </p>
+      <p>Spender unterstützen: Mit unserem neuartigen Online-Portal haben Spender die Möglichkeit, ihre Kleiderspenden einzutragen und die gewünschten Regionen auszuwählen. </p>
+      <p>Gemeinschaftsbeteiligung: Um das Bewusstsein für die Bedeutung von Kleiderspenden zu schärfen und zu zeigen, wie sie helfen können, engagieren wir uns aktiv in unserer örtlichen Gemeinschaft. </p>
+      <p>Unsere Vision: Unsere Intention ist eine Welt, in der alle Menschen unabhängig von ihren Umständen Zugang zu Bekleidung haben. Wir streben danach, durch die Reduzierung der Distanz zwischen großzügigen Spendern und bedürftigen Menschen nicht nur Kleidung anzubieten, sondern auch Hoffnung und Unterstützung.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Kontakt</h2>
+      <p>Email: support@hoffnungstraeger.org</p>
+      <p>Telefon: +49 123 456 789</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background-color: #001f3f; color: white;">
+    <div class="container">
+      <p>&copy; 2024 Hoffnungsträger. Alle Rechte vorbehalten.</p>
+      <ul class="footer-links">
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script> <!-- Ensure this is correctly linked -->
+</body>
+</html>
